@@ -20,15 +20,49 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Reservations/index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="transportDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Transportes 
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="transportDropdown">
+                                <a class="dropdown-item" href="/Reservations/TransportP/Index">Listar</a>
+                                <a class="dropdown-item" href="/Reservations/TransportP/Create">Crear </a>
+                             </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="tourDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tours 
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="tourDropdown">
+                                <a class="dropdown-item" href="/Reservations/tourp/Index">Listar</a> 
+                                <a class="dropdown-item" href="/Reservations/tourP/Create">Crear </a>
+                             </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="HotelDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Hoteles  
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="HotelDropdown">
+                                <a class="dropdown-item" href="/Reservations/Hotelp/Index">Listar</a>
+                                <a class="dropdown-item" href="/Reservations/Hotelp/Create">Crear </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="TiposTransporteDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Tipos de transporte
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="TiposTransporteDropdown">
+                                <a class="dropdown-item" href="/Reservations/transporttypep/Index">Listar</a>
+                                <a class="dropdown-item" href="/Reservations/transporttypep/Create">Crear </a>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">
