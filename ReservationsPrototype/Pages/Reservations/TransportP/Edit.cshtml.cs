@@ -36,7 +36,7 @@ namespace ReservationsPrototype.Pages.Reservations.TransportP
                 return NotFound();
             }
             Transport = transport;
-           ViewData["TransportTypeId"] = new SelectList(_context.Set<TransportType>(), "TransportTypeId", "TransportTypeId");
+           ViewData["TransportTypeId"] = new SelectList(_context.Set<TransportType>(), "TransportTypeId", "TransportTypeName");
             return Page();
         }
 

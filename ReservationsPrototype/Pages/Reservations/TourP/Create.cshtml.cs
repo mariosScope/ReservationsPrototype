@@ -25,7 +25,7 @@ namespace ReservationsPrototype.Pages.Reservations.TourP
         public IActionResult OnGet()
         {
             Console.WriteLine(_context.Provider);
-        ViewData["provider_id"] = new SelectList(_context.Provider, "provider_id", "provider_id");
+        ViewData["provider_id"] = new SelectList(_context.Provider, "provider_id", "ProviderName");
             return Page();
         }
 
@@ -39,8 +39,7 @@ namespace ReservationsPrototype.Pages.Reservations.TourP
             Console.WriteLine(_context.Tour);
           if (!ModelState.IsValid || _context.Tour == null || Tour == null)
             {
-                Console.WriteLine(Tour.provider_id);
-                Console.WriteLine("'GRITAS!!!!!!!!!!'");
+               
                 return Page();
             }
 

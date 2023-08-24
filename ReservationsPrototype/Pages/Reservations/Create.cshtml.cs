@@ -21,7 +21,7 @@ namespace ReservationsPrototype.Pages.Reservations
 
         public IActionResult OnGet()
         {
-        ViewData["CustomerId"] = new SelectList(_context.Customer, "customer_id", "customer_id");
+        ViewData["CustomerId"] = new SelectList(_context.Customer, "customer_id", "FirstName");
             return Page();
         }
 

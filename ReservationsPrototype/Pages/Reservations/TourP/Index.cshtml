@@ -41,7 +41,8 @@
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Provider.provider_id)
+                @* @Html.DisplayFor(modelItem => item.Provider.provider_id) *@
+                    @(item.Provider.ProviderName)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.tour_id">Edit</a> |
