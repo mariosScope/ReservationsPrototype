@@ -1,0 +1,59 @@
+﻿@page
+@model ReservationsPrototype.Pages.Reservations.ProviderP.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Providers</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Providers.ProviderName" class="control-label"></label>
+                <input asp-for="Providers.ProviderName" class="form-control" />
+                <span asp-validation-for="Providers.ProviderName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Providers.ProviderContactNumber" class="control-label"></label>
+                <input asp-for="Providers.ProviderContactNumber" class="form-control" />
+                <span asp-validation-for="Providers.ProviderContactNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Providers.ProviderEmail" class="control-label"></label>
+                <input asp-for="Providers.ProviderEmail" class="form-control" />
+                <span asp-validation-for="Providers.ProviderEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Providers.ProviderPersonToContact" class="control-label"></label>
+                <input asp-for="Providers.ProviderPersonToContact" class="form-control" />
+                <span asp-validation-for="Providers.ProviderPersonToContact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Providers.ProviderAddress" class="control-label"></label>
+                <input asp-for="Providers.ProviderAddress" class="form-control" />
+                <span asp-validation-for="Providers.ProviderAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Providers.IsActive" class="control-label"></label>
+                <input asp-for="Providers.IsActive" class="form-control" />
+                <span asp-validation-for="Providers.IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

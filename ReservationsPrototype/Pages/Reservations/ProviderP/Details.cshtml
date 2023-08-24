@@ -1,0 +1,55 @@
+﻿@page
+@model ReservationsPrototype.Pages.Reservations.ProviderP.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Providers</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Providers.ProviderName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Providers.ProviderName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Providers.ProviderContactNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Providers.ProviderContactNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Providers.ProviderEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Providers.ProviderEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Providers.ProviderPersonToContact)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Providers.ProviderPersonToContact)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Providers.ProviderAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Providers.ProviderAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Providers.IsActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Providers.IsActive)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Providers?.provider_id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -1,0 +1,42 @@
+﻿@page
+@model ReservationsPrototype.Pages.Reservations.ServiceTypeP.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceType[0].ServiceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceType[0].IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ServiceType) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ServiceTypeId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ServiceTypeId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ServiceTypeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

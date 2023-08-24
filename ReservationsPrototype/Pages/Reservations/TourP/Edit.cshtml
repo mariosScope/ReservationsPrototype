@@ -1,0 +1,50 @@
+﻿@page
+@model ReservationsPrototype.Pages.Reservations.TourP.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Tours</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Tours.tour_id" />
+            <div class="form-group">
+                <label asp-for="Tours.provider_id" class="control-label"></label>
+                <select asp-for="Tours.provider_id" class="form-control" asp-items="ViewBag.ProviderId"></select>
+                <span asp-validation-for="Tours.provider_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tours.TourAddress" class="control-label"></label>
+                <input asp-for="Tours.TourAddress" class="form-control" />
+                <span asp-validation-for="Tours.TourAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tours.TourContact" class="control-label"></label>
+                <input asp-for="Tours.TourContact" class="form-control" />
+                <span asp-validation-for="Tours.TourContact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tours.IsActive" class="control-label"></label>
+                <input asp-for="Tours.IsActive" class="form-control" />
+                <span asp-validation-for="Tours.IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

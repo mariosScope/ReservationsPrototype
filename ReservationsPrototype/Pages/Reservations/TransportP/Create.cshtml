@@ -1,0 +1,63 @@
+﻿@page
+@model ReservationsPrototype.Pages.Reservations.TransportP.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Transport</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Transport.Brand" class="control-label"></label>
+                <input asp-for="Transport.Brand" class="form-control" />
+                <span asp-validation-for="Transport.Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transport.Capacity" class="control-label"></label>
+                <input asp-for="Transport.Capacity" class="form-control" />
+                <span asp-validation-for="Transport.Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transport.Model" class="control-label"></label>
+                <input asp-for="Transport.Model" class="form-control" />
+                <span asp-validation-for="Transport.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transport.Year" class="control-label"></label>
+                <input asp-for="Transport.Year" class="form-control" />
+                <span asp-validation-for="Transport.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transport.Availabilty" class="control-label"></label>
+                <input asp-for="Transport.Availabilty" class="form-control" />
+                <span asp-validation-for="Transport.Availabilty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transport.IsActive" class="control-label"></label>
+                <input asp-for="Transport.IsActive" class="form-control" />
+                <span asp-validation-for="Transport.IsActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transport.TransportTypeId" class="control-label"></label>
+                <select asp-for="Transport.TransportTypeId" class ="form-control" asp-items="ViewBag.TransportTypeId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
