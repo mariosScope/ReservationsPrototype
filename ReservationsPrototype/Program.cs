@@ -1,10 +1,24 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ReservationsPrototype.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(cookieOptions =>
+{
+    cookieOptions.LoginPath = "/";
+});
+IMvcBuilder mvcBuilder = builder.Services.AddMvc()
+    .AddRazorPagesOptions(options => _ = options.Conventions.AuthorizeFolder("/Reservations"));//.SetCompatibilityVersion(version: CompatibilityVersion.Version_3_0);
+
 builder.Services.AddDbContext<ProvidersContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ProvidersContext") ?? throw new InvalidOperationException("Connection string 'ProvidersContext' not found.")));
 builder.Services.AddDbContext<HotelContext>(options =>
@@ -22,6 +36,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseAuthentication();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
