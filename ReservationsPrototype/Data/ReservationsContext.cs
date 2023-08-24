@@ -24,7 +24,90 @@ namespace ReservationsPrototype.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ReservationHotel>(entity =>
+            {
+                entity.ToTable("reservationHotel");
 
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.CheckInDate)
+                    .HasColumnType("date")
+                    .HasColumnName("checkInDate");
+
+                entity.Property(e => e.CheckInTime).HasColumnName("checkInTime");
+
+                entity.Property(e => e.CheckOutDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("checkOutDate");
+
+                entity.Property(e => e.HotelId).HasColumnName("hotel_id");
+
+                entity.Property(e => e.ReservationId).HasColumnName("reservation_id");
+
+                entity.HasOne(d => d.Hotel)
+                    .WithMany(p => p.ReservationHotels)
+                    .HasForeignKey(d => d.HotelId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_reservationHotel_Hotel");
+
+                entity.HasOne(d => d.Reservation)
+                    .WithMany(p => p.ReservationHotels)
+                    .HasForeignKey(d => d.ReservationId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Reservations_reservationHotel");
+            });
+            modelBuilder.Entity<ReservationTour>(entity =>
+            {
+                entity.ToTable("reservationTour");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.BookedDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("bookedDate");
+
+                entity.Property(e => e.ReservationId).HasColumnName("reservation_id");
+
+                entity.Property(e => e.TourId).HasColumnName("tour_id");
+
+                entity.HasOne(d => d.Reservation)
+                    .WithMany(p => p.ReservationTours)
+                    .HasForeignKey(d => d.ReservationId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_reservationTour_Reservation");
+
+                entity.HasOne(d => d.Tour)
+                    .WithMany(p => p.ReservationTours)
+                    .HasForeignKey(d => d.TourId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_reservationTour_Tours");
+            });
+            modelBuilder.Entity<ReservationTransport>(entity =>
+            {
+                entity.ToTable("reservationTransport");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.BookedDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("bookedDate");
+
+                entity.Property(e => e.ReservationId).HasColumnName("reservation_id");
+
+                entity.Property(e => e.TransportId).HasColumnName("transport_id");
+
+                entity.HasOne(d => d.Reservation)
+                    .WithMany(p => p.ReservationTransports)
+                    .HasForeignKey(d => d.ReservationId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_reservationTransport_Reservation");
+
+                entity.HasOne(d => d.Transport)
+                    .WithMany(p => p.ReservationTransports)
+                    .HasForeignKey(d => d.TransportId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_reservationTransport_Transport");
+            });
             modelBuilder.Entity<Reservation>(entity =>
             {
                 entity.ToTable("Reservation");
