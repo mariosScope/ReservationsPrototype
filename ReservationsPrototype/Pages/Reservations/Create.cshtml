@@ -9,38 +9,52 @@
 
 <h4>Reservation</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
+<div>
+        <form class="row" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Reservation.StartDate" class="control-label"></label>
-                <input asp-for="Reservation.StartDate" class="form-control" />
-                <span asp-validation-for="Reservation.StartDate" class="text-danger"></span>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Reservation.StartDate" class="control-label"></label>
+                    <input asp-for="Reservation.StartDate" class="form-control" />
+                    <span asp-validation-for="Reservation.StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Reservation.EndDate" class="control-label"></label>
+                    <input asp-for="Reservation.EndDate" class="form-control" />
+                    <span asp-validation-for="Reservation.EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Reservation.CustomerId" class="control-label"></label>
+                    <select asp-for="Reservation.CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Reservation.IsActive" class="control-label"></label>
+                    <input asp-for="Reservation.IsActive" class="form-control" />
+                    <span asp-validation-for="Reservation.IsActive" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Reservation.EndDate" class="control-label"></label>
-                <input asp-for="Reservation.EndDate" class="form-control" />
-                <span asp-validation-for="Reservation.EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Reservation.CustomerId" class="control-label"></label>
-                <select asp-for="Reservation.CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Reservation.IsActive" class="control-label"></label>
-                <input asp-for="Reservation.IsActive" class="form-control" />
-                <span asp-validation-for="Reservation.IsActive" class="text-danger"></span>
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label asp-for="SelectedHotelId">Select Hotels:</label>
+                    <select asp-for="SelectedHotelId" class="form-control" asp-items="ViewBag.Hotel"></select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="SelectedTourId">Select Tours:</label>
+                    <select asp-for="SelectedTourId" class="form-control" asp-items="ViewBag.Tours"></select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="SelectedTransportId">Select Transports:</label>
+                    <select asp-for="SelectedTransportId" class="form-control" asp-items="ViewBag.Transports"></select>
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-page="Index">Back to List</a>
             </div>
         </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {
