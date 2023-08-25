@@ -7,7 +7,7 @@
 
 <h1>Create</h1>
 
-<h4>Reservation</h4>
+<h4>Reservation filters</h4>
 <hr />
 <div>
         <form class="row" method="post">
@@ -36,18 +36,18 @@
             <div class="col-md-4">
 
                 <div class="form-group">
-                    <label asp-for="SelectedHotelId">Select Hotels:</label>
-                    <select asp-for="SelectedHotelId" class="form-control" asp-items="ViewBag.Hotel"></select>
+                    <label asp-for="SelectedHotelIds">Select Hotels:</label>
+                    <select asp-for="SelectedHotelIds" class="form-control" asp-items="ViewBag.Hotel"></select>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="SelectedTourId">Select Tours:</label>
-                    <select asp-for="SelectedTourId" class="form-control" asp-items="ViewBag.Tours"></select>
+                    <label asp-for="SelectedTourIds">Select Tours:</label>
+                    <select asp-for="SelectedTourIds" class="form-control" asp-items="ViewBag.Tours"></select>
                 </div>
 
                 <div class="form-group">
-                    <label asp-for="SelectedTransportId">Select Transports:</label>
-                    <select asp-for="SelectedTransportId" class="form-control" asp-items="ViewBag.Transports"></select>
+                    <label asp-for="SelectedTransportIds">Select Transports:</label>
+                    <select asp-for="SelectedTransportIds" class="form-control" asp-items="ViewBag.Transports"></select>
                 </div>
             </div>
             <div class="form-group">
