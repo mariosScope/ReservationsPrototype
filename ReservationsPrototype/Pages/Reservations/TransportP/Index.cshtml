@@ -59,7 +59,7 @@
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TransportType.TransportTypeId)
+                @Html.DisplayFor(modelItem => item.TransportType.TransportTypeName)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.TransportId">Edit</a> |

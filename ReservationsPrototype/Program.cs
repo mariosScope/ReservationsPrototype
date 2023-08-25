@@ -24,7 +24,7 @@ builder.Services.AddDbContext<ProvidersContext>(options =>
 builder.Services.AddDbContext<HotelContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("HotelContext") ?? throw new InvalidOperationException("Connection string 'HotelContext' not found.")));
 builder.Services.AddDbContext<ReservationsContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CostumerContext") ?? throw new InvalidOperationException("Connection string 'CostumerContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CustomerContext") ?? throw new InvalidOperationException("Connection string 'CostumerContext' not found.")));
 
 var app = builder.Build();
 

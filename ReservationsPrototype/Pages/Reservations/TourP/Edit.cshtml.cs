@@ -36,7 +36,7 @@ namespace ReservationsPrototype.Pages.Reservations.TourP
                 return NotFound();
             }
             Tours = tours;
-           ViewData["ProviderId"] = new SelectList(_context.Provider, "ProviderId", "ProviderId");
+           ViewData["ProviderId"] = new SelectList(_context.Provider, "ProviderId", "ProviderName");
             return Page();
         }
 
