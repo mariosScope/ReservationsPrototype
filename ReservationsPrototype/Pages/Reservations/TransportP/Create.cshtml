@@ -45,7 +45,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Transport.TransportTypeId" class="control-label"></label>
-                <select asp-for="Transport.TransportTypeId" class ="form-control" asp-items="ViewBag.TransportTypeId"></select>
+                <select asp-for="Transport.TransportTypeId" class ="form-control" asp-items="ViewBag.TransportTypeId">
+                    <option value="">please select</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -47,7 +47,9 @@
 
                 <div class="form-group">
                     <label asp-for="SelectedTransportIds">Select Transports:</label>
-                    <select asp-for="SelectedTransportIds" class="form-control" asp-items="ViewBag.Transports"></select>
+                    <select asp-for="SelectedTransportIds" class="form-control" asp-items="ViewBag.Transports">
+                        <option value="">please select</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">

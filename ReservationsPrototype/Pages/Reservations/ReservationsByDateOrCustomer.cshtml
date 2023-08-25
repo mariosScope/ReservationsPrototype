@@ -1,0 +1,90 @@
+﻿@page
+@model ReservationsPrototype.Pages.Reservations.ReservationsByDateOrCustomerModel
+
+@{
+    ViewData["Title"] = "ReservationsByDateOrCustomer";
+}
+
+<h1>ReservationsByDateOrCustomer</h1>
+
+<h4>Reservation filters</h4>
+<hr />
+<div>
+    <form class="row" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="BeginDate" class="control-label"></label>
+                <input asp-for="BeginDate" class="form-control" />
+                <span asp-validation-for="BeginDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label"></label>
+                <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId">
+                    <option value="">please select</option>
+                </select>
+            </div>
+ 
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+            <a asp-page="Index">Back to List</a>
+        </div>
+    </form>
+</div>
+@if (Model.Reservations.Count > 0){
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reservations[0].StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reservations[0].EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reservations[0].ReservationHotels)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reservations[0].Customer)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model.Reservations) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                        @foreach (var rvhotl in item.ReservationHotels)
+                        {
+                            @Html.DisplayFor(modelItem => rvhotl.Hotel.HotelAddress);
+                        }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.customer_id)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ReservationId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ReservationId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ReservationId">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+}
