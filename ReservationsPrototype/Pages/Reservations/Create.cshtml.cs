@@ -26,7 +26,7 @@ namespace ReservationsPrototype.Pages.Reservations
             ViewData["CustomerId"] = new SelectList(_context.Customer, "customer_id", "FirstName");
             ViewData["Hotel"] = new SelectList(_hotel_context.Hotel, "hotel_id", "HotelName");
             //ViewData["Tours"] = new SelectList(_context.Tour, "tour_id", "tour_id");
-
+            // Load data from provider associated with tour.
             ViewData["Tours"] = new SelectList(
                 from tour in _context.Tour
                 join provider in _context.Provider on tour.provider_id equals provider.provider_id
@@ -48,11 +48,11 @@ namespace ReservationsPrototype.Pages.Reservations
         [BindProperty]
         public Reservation Reservation { get; set; } = default!;
         [BindProperty]
-        public int SelectedHotelId { get; set; }
+        public List<int> SelectedHotelIds { get; set; }
         [BindProperty]
-        public int SelectedTourId { get; set; }
+        public List<int> SelectedTourIds { get; set; }
         [BindProperty]
-        public int SelectedTransportId { get; set; }
+        public List<int> SelectedTransportIds { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -66,11 +66,23 @@ namespace ReservationsPrototype.Pages.Reservations
             }
             // Assign selected hotels, tours, and transports to the reservation
 
-            Reservation.ReservationHotels.Add(new ReservationHotel { HotelId = SelectedHotelId });
-            
-            Reservation.ReservationTours.Add(new ReservationTour { TourId = SelectedTourId });
-            
-            Reservation.ReservationTransports.Add(new ReservationTransport { TransportId = SelectedTransportId });
+            foreach (var hotelId in SelectedHotelIds)
+            {
+                Reservation.ReservationHotels.Add(new ReservationHotel { HotelId = hotelId });
+            }
+            //Reservation.ReservationHotels.Add(new ReservationHotel { HotelId = SelectedHotelId });
+
+            foreach (var tourId in SelectedTourIds)
+            {
+                Reservation.ReservationTours.Add(new ReservationTour { TourId = tourId });
+            }
+            //Reservation.ReservationTours.Add(new ReservationTour { TourId = SelectedTourId });
+
+            foreach (var transportId in SelectedTransportIds)
+            {
+                Reservation.ReservationTransports.Add(new ReservationTransport { TransportId = transportId });
+            }
+            //Reservation.ReservationTransports.Add(new ReservationTransport { TransportId = SelectedTransportId });
             await _context.SaveChangesAsync();
 
             _context.Reservation.Add(Reservation);
